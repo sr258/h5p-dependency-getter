@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "noEmitOnError": true,
+    "allowJs": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "es2017",
+    "noUnusedLocals": true,
+    "types": [
+      "node"
+    ]
+  },
+  "include": [
+    "./src/**/*"
+  ]
+}

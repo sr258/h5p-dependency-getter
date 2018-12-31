@@ -4,7 +4,8 @@
   "description": "Downloads H5P library dependencies",
   "main": "src/index.ts",
   "scripts": {
-    "test": "mocka"
+    "test": "mocka",
+    "run": "node -r ts-node/register src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -20,12 +21,15 @@
   },
   "homepage": "https://github.com/sr258/h5p-dependency-getter#readme",
   "dependencies": {
+    "@types/node": "^10.12.18",
+    "axios": "^0.18.0",
     "fs-extra": "^7.0.1",
+    "ts-loader": "^5.3.2",
     "ts-node": "^7.0.1",
-    "typescript": "^3.2.2",
-    "ts-loader": "^5.3.2"
+    "typescript": "^3.2.2"
   },
   "devDependencies": {
+    "@types/fs-extra": "^5.0.4",
     "mocha": "^5.2.0",
     "mocha-typescript": "^1.1.17",
     "tslint": "^5.12.0"
