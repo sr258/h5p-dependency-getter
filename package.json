@@ -1,0 +1,33 @@
+{
+  "name": "h5p-dependency-getter",
+  "version": "0.1.0",
+  "description": "Downloads H5P library dependencies",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "mocka"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sr258/h5p-dependency-getter.git"
+  },
+  "keywords": [
+    "h5p"
+  ],
+  "author": "Sebastian Rettig",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sr258/h5p-dependency-getter/issues"
+  },
+  "homepage": "https://github.com/sr258/h5p-dependency-getter#readme",
+  "dependencies": {
+    "fs-extra": "^7.0.1",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.2.2",
+    "ts-loader": "^5.3.2"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0",
+    "mocha-typescript": "^1.1.17",
+    "tslint": "^5.12.0"
+  }
+}
