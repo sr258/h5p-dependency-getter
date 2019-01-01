@@ -28,10 +28,12 @@
     "simple-git": "^1.107.0",
     "ts-loader": "^5.3.2",
     "ts-node": "^7.0.1",
-    "typescript": "^3.2.2"
+    "typescript": "^3.2.2",
+    "yargs": "^12.0.5"
   },
   "devDependencies": {
     "@types/fs-extra": "^5.0.4",
+    "@types/yargs": "^12.0.5",
     "mocha": "^5.2.0",
     "mocha-typescript": "^1.1.17",
     "tslint": "^5.12.0"
