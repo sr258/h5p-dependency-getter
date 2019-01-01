@@ -12,9 +12,7 @@ export default class H5PRegistry implements IRegistry {
   private registryUrl = "https://h5p.org/registry.json";
   private registryData: IRegistryData;
 
-  private constructor() {
-
-  }
+  private constructor() { }
 
   public async getLibraryInformationForMachineName(machineName: string): Promise<ILibraryData> {
     for (const libraryName in this.registryData.libraries) {

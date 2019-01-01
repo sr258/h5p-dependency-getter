@@ -9,9 +9,7 @@ export default class LibraryMetadataGetter {
   }
 
   public metadata: ILibraryMetadata;
-  private constructor(private libraryPath) {
-
-  }
+  private constructor(private libraryPath: string) { }
 
   private async initialize() {
     this.metadata = (await fs.readJSON(this.libraryPath + "/library.json")) as ILibraryMetadata;
