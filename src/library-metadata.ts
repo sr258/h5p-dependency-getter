@@ -1,5 +1,5 @@
 import * as fs from "fs-extra";
-import ILibraryMetadata from "./ilibrary-metadata";
+import { ILibraryMetadata } from "./ilibrary-metadata";
 
 export default class LibraryMetadataGetter {
   public static async create(libraryPath: string): Promise<LibraryMetadataGetter> {

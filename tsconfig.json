@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": { "*": ["types/*"] },
     "noEmitOnError": true,
     "allowJs": true,
     "module": "commonjs",

@@ -1,4 +1,10 @@
-export default interface ILibraryMetadata {
+export interface IDependency {
+  machineName: string;
+  majorVersion: number;
+  minorVersion: number;
+}
+
+export interface ILibraryMetadata {
   title: string;
   description: string;
   majorVersion: number;
@@ -23,16 +29,6 @@ export default interface ILibraryMetadata {
       path: string;
     }
   ];
-  preloadedDependencies: [
-    {
-      machineName: string;
-      majorVersion: number;
-      minorVersion: number;
-    }
-  ];
-  editorDependencies: [{
-    machineName: string;
-    majorVersion: number;
-    minorVersion: number;
-  }];
+  preloadedDependencies: IDependency[];
+  editorDependencies: IDependency[];
 }
