@@ -7,6 +7,8 @@ This Node application downloads the dependencies of h5p libraries from its sourc
 * The H5P CLI tool does not download dependencies for the editor or libraries that are used in semantics.json but not in library.json.
 * The H5P CLI tool forces you to have GitHub account and to add your SSH key to GitHub.
 
+Note that the application always downloads from the master branch of the repositories and gets the source code of the libraries. If they require any kind of compiling, transpiling oder packing, you have to run this yourself.
+
 ## Installing
 
 The application **requires you to have Git** up and running.
