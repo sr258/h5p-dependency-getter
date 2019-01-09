@@ -1,0 +1,13 @@
+{
+  "apiVersion": 1,
+  "libraries": {
+    "blob": {
+      "version": {
+        "major": "1",
+        "minor": "0"
+      },
+      "machineName": "H5P.TextUtilities",
+      "repository": "git@github.com:otacke/h5p-text-utilities.git"
+    }
+  }
+}

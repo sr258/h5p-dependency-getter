@@ -1,18 +1,16 @@
-import * as axios from "axios";
+import * as fs from "fs-extra";
+
 import { IRegistry } from "./iregistry";
 import { ILibraryData, IRegistryData } from "./iregistry-data";
 
-export default class H5PRegistry implements IRegistry {
-  public static async create(): Promise<H5PRegistry> {
-    const registry = new H5PRegistry();
+export class LocalRegistry implements IRegistry {
+  public static async create(path: string): Promise<LocalRegistry> {
+    const registry = new LocalRegistry(path);
     await registry.initialize();
     return registry;
   }
   private registryData: IRegistryData;
-
-  private registryUrl = "https://h5p.org/registry.json";
-
-  private constructor() { }
+  private constructor(private path: string) { }
 
   public async getLibraryInformationForMachineName(machineName: string): Promise<ILibraryData> {
     for (const libraryName in this.registryData.libraries) {
@@ -25,7 +23,7 @@ export default class H5PRegistry implements IRegistry {
   }
 
   private async initialize() {
-    this.registryData = (await axios.default.get<IRegistryData>(this.registryUrl)).data;
+    this.registryData = (await fs.readJSON(this.path));
     for (const devName in this.registryData.libraries) {
       this.registryData.libraries[devName].devName = devName;
     }

@@ -3,6 +3,7 @@ import { CombinedRegistry } from "./combined-registry";
 import { Getter } from "./getter";
 import { GithubFallbackRegistry } from "./github-fallback-registry";
 import H5PRegistry from "./h5p-registry";
+import { LocalRegistry } from "./local-registry";
 
 (async () => {
   const argv = yargs
@@ -31,7 +32,8 @@ import H5PRegistry from "./h5p-registry";
 
   const h5pRegistry = await H5PRegistry.create();
   const fallbackRegistry = new GithubFallbackRegistry();
-  const getter = new Getter(new CombinedRegistry(h5pRegistry, fallbackRegistry));
+  const localRegistry = await LocalRegistry.create("src/registry-data.json");
+  const getter = new Getter(new CombinedRegistry(h5pRegistry, localRegistry, fallbackRegistry));
   getter.forcedHttps = argv.https;
   if (argv.libpath) {
     await getter.getDependenciesForExistingLibrary(argv.libpath, argv.directory);
