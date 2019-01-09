@@ -17,6 +17,9 @@ export class Getter {
     if (libraryMetadata.metadata && libraryMetadata.metadata.editorDependencies) {
       await this.getDependenciesRecursive(libraryMetadata.metadata.editorDependencies, libraryDirectory);
     }
+    if (libraryMetadata.metadata && libraryMetadata.metadata.dynamicDependencies) {
+      await this.getDependenciesRecursive(libraryMetadata.metadata.dynamicDependencies, libraryDirectory);
+    }
   }
 
   public async getLibraryAndDependencies(machineName: string, libraryDirectory: string) {

@@ -31,4 +31,5 @@ export interface ILibraryMetadata {
   ];
   preloadedDependencies: IDependency[];
   editorDependencies: IDependency[];
+  dynamicDependencies?: IDependency[];
 }

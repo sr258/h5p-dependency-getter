@@ -14,6 +14,10 @@
       ],
       "args": [
         "${workspaceFolder}/src/index.ts",
+        "-d",
+        "./libs",
+        "-n",
+        "h5p-blanks"
       ],
       "outputCapture": "std"
     }
