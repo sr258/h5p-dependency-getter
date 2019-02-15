@@ -31,4 +31,8 @@ export class GithubFallbackRegistry implements IRegistry {
       return null;
     }
   }
+
+  public async getAllLibraries(): Promise<ILibraryData[]> {
+    return [];
+  }
 }

@@ -24,6 +24,14 @@ export default class H5PRegistry implements IRegistry {
     return null;
   }
 
+  public async getAllLibraries(): Promise<ILibraryData[]> {
+    const libs = [];
+    for (const libraryName in this.registryData.libraries) {
+      libs.push(this.registryData.libraries[libraryName]);
+    }
+    return libs;
+  }
+
   private async initialize() {
     this.registryData = (await axios.default.get<IRegistryData>(this.registryUrl)).data;
     for (const devName in this.registryData.libraries) {

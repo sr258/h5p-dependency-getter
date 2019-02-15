@@ -1,0 +1,14 @@
+{
+   "license" : "MIT",
+   "slug" : "h5p-advanced-blanks-test2",
+   "branch" : "master",
+   "file_format" : "json",
+   "template" : "language/.en.json",
+   "new_base" : "language/.en.json",
+   "filemask" : "language/*.json",
+   "name" : "h5p-advanced-blanks-test2",
+   "vcs" : "github",
+   "license_url" : "https://opensource.org/licenses/MIT",
+   "repo" : "git@github.com:sr258/h5p-advanced-blanks",
+   "push" : "git@github.com:sr258/h5p-advanced-blanks"
+}

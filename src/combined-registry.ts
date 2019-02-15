@@ -17,4 +17,12 @@ export class CombinedRegistry implements IRegistry {
     }
     return null;
   }
+
+  public async getAllLibraries(): Promise<ILibraryData[]> {
+    let libs = [];
+    for (const registry of this.registries) {
+      libs = libs.concat(await registry.getAllLibraries());
+    }
+    return libs;
+  }
 }
