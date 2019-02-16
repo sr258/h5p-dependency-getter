@@ -22,6 +22,7 @@
   "homepage": "https://github.com/sr258/h5p-dependency-getter#readme",
   "dependencies": {
     "@types/node": "^10.12.18",
+    "await-exec": "^0.1.2",
     "axios": "^0.18.0",
     "decamelize": "^2.0.0",
     "fs-extra": "^7.0.1",

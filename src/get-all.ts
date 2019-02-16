@@ -1,3 +1,4 @@
+import * as exec from "await-exec";
 import * as fs from "fs-extra";
 
 import { CombinedRegistry } from "./combined-registry";
@@ -36,12 +37,12 @@ function createWeblateImportData(lib: ILibraryData, license: string, languageFil
 }
 
 async function getBaseLanguageFile(libraryDirectory): Promise<string> {
-  /*if (await fs.pathExists(libraryDirectory + "/language/.en.json")) {
+  if (await fs.pathExists(libraryDirectory + "/language/.en.json")) {
     return ".en";
-  }*/
-  if (await fs.pathExists(libraryDirectory + "/language/en.json")) {
-    return "en";
   }
+  /*if (await fs.pathExists(libraryDirectory + "/language/en.json")) {
+    return "en";
+  }*/
   return undefined;
 }
 
@@ -56,10 +57,18 @@ async function addLibraryInfoRecursive(machineName: string, libraryBaseDir: stri
     const libInternalInfo = await getInternalInfo(info.devName, libPath);
     const languageFilename = await getBaseLanguageFile(libPath);
     if (!languageFilename) {
-      console.log(`No base language file in library ${info.devName}`);
+      console.log(`No base language file in library ${info.devName}. Not adding this library to the list.`);
     }
     if (languageFilename && libInternalInfo) {
-      weblateInfo.push(createWeblateImportData(info, libInternalInfo.license, languageFilename));
+      await exec(`cd /home/sebastian/Documents/translate && python3 -m translate.convert.json2po -t ${libPath}/language/${languageFilename}.json ${libPath}/language/${languageFilename}.json /home/sebastian/tmp/test.po`);
+      await exec(`cd /home/sebastian/Documents/translate && python3 -m translate.convert.po2json -t ${libPath}/language/${languageFilename}.json /home/sebastian/tmp/test.po /home/sebastian/tmp/roundtrip.json`);
+      const original = await fs.readJSON(`${libPath}/language/${languageFilename}.json`);
+      const roundtrip = await fs.readJSON("/home/sebastian/tmp/roundtrip.json");
+      if (JSON.stringify(original) !== JSON.stringify(roundtrip)) {
+        console.error(`roundtrip not identical @ ${info.devName}. Not adding this library to the list.`);
+      } else {
+        weblateInfo.push(createWeblateImportData(info, libInternalInfo.license, languageFilename));
+      }
     }
   }
 
@@ -72,7 +81,7 @@ async function addLibraryInfoRecursive(machineName: string, libraryBaseDir: stri
 }
 
 (async () => {
-  const libraryDir = "./libs";
+  const libraryDir = "/home/sebastian/Documents/h5p_dev/h5p-dependency-getter/libs";
 
   const h5pRegistry = await H5PRegistry.create();
   const fallbackRegistry = new GithubFallbackRegistry();
