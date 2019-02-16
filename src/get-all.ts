@@ -9,6 +9,9 @@ import { IRegistry } from "./iregistry";
 import { ILibraryData } from "./iregistry-data";
 import { LocalRegistry } from "./local-registry";
 
+const commitMessage = "Updated translation '{{ language_name }}' using Weblate @ H5P Translation Community.\n\n\
+Translate-URL: {{ url }}\n";
+
 async function getInternalInfo(devName, directory): Promise<any> {
   try {
     const libInfo = await fs.readJSON(directory + "/library.json");
@@ -22,6 +25,7 @@ async function getInternalInfo(devName, directory): Promise<any> {
 function createWeblateImportData(lib: ILibraryData, license: string, languageFilename: string) {
   return {
     branch: "master",
+    commit_message: commitMessage,
     file_format: "json",
     filemask: "language/*.json",
     license: license || "unknown",
@@ -29,6 +33,7 @@ function createWeblateImportData(lib: ILibraryData, license: string, languageFil
     name: lib.devName,
     new_base: `language/${languageFilename}.json`,
     push: lib.repository,
+    push_on_commit: false,
     repo: lib.repository,
     slug: lib.devName,
     template: `language/${languageFilename}.json`,
@@ -37,12 +42,12 @@ function createWeblateImportData(lib: ILibraryData, license: string, languageFil
 }
 
 async function getBaseLanguageFile(libraryDirectory): Promise<string> {
-  if (await fs.pathExists(libraryDirectory + "/language/.en.json")) {
+  /*if (await fs.pathExists(libraryDirectory + "/language/.en.json")) {
     return ".en";
-  }
-  /*if (await fs.pathExists(libraryDirectory + "/language/en.json")) {
-    return "en";
   }*/
+  if (await fs.pathExists(libraryDirectory + "/language/en.json")) {
+    return "en";
+  }
   return undefined;
 }
 
