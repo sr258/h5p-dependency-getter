@@ -20,6 +20,19 @@
         "h5p-blanks"
       ],
       "outputCapture": "std"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Get all",
+      "runtimeArgs": [
+        "-r",
+        "ts-node/register"
+      ],
+      "args": [
+        "${workspaceFolder}/src/get-all.ts"
+      ],
+      "outputCapture": "std"
     }
   ]
 }

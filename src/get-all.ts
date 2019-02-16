@@ -11,10 +11,6 @@ import { LocalRegistry } from "./local-registry";
 async function getInternalInfo(devName, directory): Promise<any> {
   try {
     const libInfo = await fs.readJSON(directory + "/library.json");
-    if (!(await fs.pathExists(directory + "/language/.en.json"))) {
-      console.error(`library ${devName} has no language files.`);
-      return null;
-    }
     return libInfo;
   } catch (e) {
     console.error(`No library.json in ${directory}. Skipping`);
@@ -22,21 +18,31 @@ async function getInternalInfo(devName, directory): Promise<any> {
   }
 }
 
-function createWeblateImportData(lib: ILibraryData, license: string) {
+function createWeblateImportData(lib: ILibraryData, license: string, languageFilename: string) {
   return {
     branch: "master",
     file_format: "json",
     filemask: "language/*.json",
-    license,
+    license: license || "unknown",
     license_url: Getter.convertGitUrlToHttps(lib.repository),
     name: lib.devName,
-    new_base: "language/.en.json",
+    new_base: `language/${languageFilename}.json`,
     push: lib.repository,
     repo: lib.repository,
     slug: lib.devName,
-    template: "language/.en.json",
+    template: `language/${languageFilename}.json`,
     vcs: "github",
   };
+}
+
+async function getBaseLanguageFile(libraryDirectory): Promise<string> {
+  /*if (await fs.pathExists(libraryDirectory + "/language/.en.json")) {
+    return ".en";
+  }*/
+  if (await fs.pathExists(libraryDirectory + "/language/en.json")) {
+    return "en";
+  }
+  return undefined;
 }
 
 async function addLibraryInfoRecursive(machineName: string, libraryBaseDir: string, registry: IRegistry, getter: Getter, weblateInfo: any[], checkedMachineNames: string[]) {
@@ -48,8 +54,12 @@ async function addLibraryInfoRecursive(machineName: string, libraryBaseDir: stri
   const libPath = await getter.getLibrary(machineName, libraryBaseDir);
   if (info) {
     const libInternalInfo = await getInternalInfo(info.devName, libPath);
-    if (libInternalInfo) {
-      weblateInfo.push(createWeblateImportData(info, libInternalInfo.license));
+    const languageFilename = await getBaseLanguageFile(libPath);
+    if (!languageFilename) {
+      console.log(`No base language file in library ${info.devName}`);
+    }
+    if (languageFilename && libInternalInfo) {
+      weblateInfo.push(createWeblateImportData(info, libInternalInfo.license, languageFilename));
     }
   }
 
