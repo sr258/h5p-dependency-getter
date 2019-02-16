@@ -9,6 +9,46 @@
       "machineName": "H5P.TextUtilities",
       "repository": "git@github.com:otacke/h5p-text-utilities.git"
     },
+    "h5p-timer": {
+      "version": {
+        "major": "0",
+        "minor": "4"
+      },
+      "machineName": "H5P.Timer",
+      "repository": "git@github.com:otacke/h5p-timer.git"
+    },
+    "h5p-agamotto": {
+      "version": {
+        "major": "1",
+        "minor": "4"
+      },
+      "machineName": "H5P.Agamotto",
+      "repository": "git@github.com:otacke/h5p-agamotto.git"
+    },
+    "h5p-essay": {
+      "version": {
+        "major": "1",
+        "minor": "2"
+      },
+      "machineName": "H5P.Essay",
+      "repository": "git@github.com:otacke/h5p-essay.git"
+    },
+    "h5p-dictation": {
+      "version": {
+        "major": "1",
+        "minor": "0"
+      },
+      "machineName": "H5P.Dictation",
+      "repository": "git@github.com:otacke/h5p-dictation.git"
+    },
+    "h5p-image-juxtaposition": {
+      "version": {
+        "major": "1",
+        "minor": "2"
+      },
+      "machineName": "H5P.ImageJuxtaposition",
+      "repository": "git@github.com:otacke/h5p-image-juxtaposition.git"
+    },
     "h5p-advanced-blanks": {
       "version": {
         "major": "1",
@@ -16,6 +56,94 @@
       },
       "machineName": "H5P.AdvancedBlanks",
       "repository": "git@github.com:sr258/h5p-advanced-blanks.git"
+    },
+    "h5p-ractive": {
+      "version": {
+        "major": "0",
+        "minor": "8"
+      },
+      "machineName": "RactiveJS",
+      "repository": "git@github.com:sr258/h5p-ractive"
+    },
+    "h5p-memory-game": {
+      "version": {
+        "major": "1",
+        "minor": "3"
+      },
+      "machineName": "H5P.MemoryGame",
+      "repository": "git@github.com:h5p/h5p-memory-game.git"
+    },
+    "h5p-ckeditor": {
+      "version": {
+        "major": "1",
+        "minor": "0"
+      },
+      "machineName": "H5P.CKEditor",
+      "repository": "git@github.com:h5p/h5p-ckeditor.git"
+    },
+    "h5p-image-multiple-hotspot-question": {
+      "version": {
+        "major": "1",
+        "minor": "0"
+      },
+      "machineName": "H5P.ImageMultipleHotspotQuestion",
+      "repository": "git@github.com:lukemuller/h5p-image-multiple-hotspot-question.git"
+    },
+    "h5p-editor-image-multiple-hotspot-question": {
+      "version": {
+        "major": "1",
+        "minor": "0"
+      },
+      "machineName": "H5PEditor.ImageMultipleHotspotQuestion",
+      "repository": "git@github.com:lukemuller/h5p-editor-image-multiple-hotspot-question.git"
+    },
+    "h5p-image-slider": {
+      "version": {
+        "major": "1",
+        "minor": "0"
+      },
+      "machineName": "H5P.ImageSlider",
+      "repository": "git@github.com:falcon-git/h5p-image-slider.git"
+    },
+    "h5p-impressive-presentation": {
+      "version": {
+        "major": "1",
+        "minor": "3"
+      },
+      "machineName": "H5P.ImpressPresentation",
+      "repository": "git@github.com:h5p/h5p-impressive-presentation.git"
+    },
+    "h5p-editor-impressive-presentation": {
+      "version": {
+        "major": "1",
+        "minor": "3"
+      },
+      "machineName": "H5PEditor.ImpressPresentation",
+      "repository": "git@github.com:h5p/h5p-editor-impressive-presentation.git"
+    },
+    "h5p-personality-quiz": {
+      "version": {
+        "major": "1",
+        "minor": "0"
+      },
+      "machineName": "H5P.PersonalityQuiz",
+      "repository": "git@github.com:LumeniaAS/h5p-personality-quiz.git"
+    },
+    "h5p-speak-the-words": {
+      "version": {
+        "major": "1",
+        "minor": "0"
+      },
+      "machineName": "H5P.SpeakTheWords",
+      "repository": "git@github.com:h5p/h5p-speak-the-words.git"
+    },
+    "h5p-speak-the-words-set": {
+      "version": {
+        "major": "1",
+        "minor": "1"
+      },
+      "machineName": "H5P.SpeakTheWordsSet",
+      "repository": "git@github.com:h5p/h5p-speak-the-words-set.git"
     }
   }
 }

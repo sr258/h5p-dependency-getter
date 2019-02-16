@@ -36,3 +36,12 @@ If you don't have a GitHub account or don't want to add your SSH key to it, you 
 npm run h5p-dependency-getter -- -d /home/h5p_stuff/libraries -n the-h5p-library-i-want-to-download --https
 ``` 
 But beware: The dependency getter tries to guess the location of unknown h5p libraries on GitHub. If the library can't be found, you're asked to enter credentials when using the ``--https`` mode. The download process will be paused until you enter them. If you don't use the ``--https`` flag, the download will simply fail and the whole download process will continue with the next library without any user interaction.
+
+## Missing libraries
+
+ImagePair and ImageSequencing aren't on GitHub but on GitLab:
+
+ 	* https://gitlab.com/icfoss/H5P-ImagePair nicht auf GitHub
+	* https://gitlab.com/icfoss/H5P-ImageSequencing
+
+That's why they are not available here.
