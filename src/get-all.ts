@@ -22,7 +22,7 @@ async function getInternalInfo(devName, directory): Promise<any> {
   }
 }
 
-function createWeblateImportData(lib: ILibraryData, license: string, languageFilename: string) {
+function createWeblateImportData(lib: ILibraryData, license: string, languageFilename: string,) {
   return {
     branch: "master",
     commit_message: commitMessage,
@@ -35,6 +35,7 @@ function createWeblateImportData(lib: ILibraryData, license: string, languageFil
     push: lib.repository,
     push_on_commit: false,
     repo: lib.repository,
+    repoweb: `${Getter.convertGitUrlToHttps(lib.repository)}/%(branch)s/%(file)s#L%(line)s`,
     slug: lib.devName,
     template: `language/${languageFilename}.json`,
     vcs: "github",
@@ -42,9 +43,9 @@ function createWeblateImportData(lib: ILibraryData, license: string, languageFil
 }
 
 async function getBaseLanguageFile(libraryDirectory): Promise<string> {
-  /*if (await fs.pathExists(libraryDirectory + "/language/.en.json")) {
+  if (await fs.pathExists(libraryDirectory + "/language/.en.json")) {
     return ".en";
-  }*/
+  }
   if (await fs.pathExists(libraryDirectory + "/language/en.json")) {
     return "en";
   }
