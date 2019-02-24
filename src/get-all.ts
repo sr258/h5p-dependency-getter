@@ -9,8 +9,13 @@ import { IRegistry } from "./iregistry";
 import { ILibraryData } from "./iregistry-data";
 import { LocalRegistry } from "./local-registry";
 
-const commitMessage = "Updated translation '{{ language_name }}' using Weblate @ H5P Translation Community.\n\n\
-Translate-URL: {{ url }}\n";
+const commitMessage = "{{ author }} updated {{ language_name }} translation using Weblate @ Deutsche H5P-Übersetzungscommunity.\n\n \
+Translate-URL: {{ url }}";
+const addMessage = "{{ author }} added {{ language_name }} translation using Weblate @ Deutsche H5P-Übersetzungscommunity.\n\n \
+Translate-URL: {{ url }}";
+const deleteMessage = "{{ author }} deleted {{ language_name }} translation using Weblate @ Deutsche H5P-Übersetzungscommunity.\n\n \
+Translate-URL: {{ url }}";
+const mergeMessage = "Merge branch '{{ component_remote_branch }}' into Weblate.";
 
 async function getInternalInfo(devName, directory): Promise<any> {
   try {
@@ -24,12 +29,15 @@ async function getInternalInfo(devName, directory): Promise<any> {
 
 function createWeblateImportData(lib: ILibraryData, license: string, languageFilename: string,) {
   return {
+    add_message: addMessage,
     branch: "master",
     commit_message: commitMessage,
+    delete_message: deleteMessage,
     file_format: "json",
     filemask: "language/*.json",
     license: license || "unknown",
     license_url: Getter.convertGitUrlToHttps(lib.repository),
+    merge_message: mergeMessage,
     name: lib.devName,
     new_base: `language/${languageFilename}.json`,
     push: lib.repository,
