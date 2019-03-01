@@ -27,7 +27,7 @@ async function getInternalInfo(devName, directory): Promise<any> {
   }
 }
 
-function createWeblateImportData(lib: ILibraryData, license: string, languageFilename: string,) {
+function createWeblateImportData(lib: ILibraryData, license: string, languageFilename: string, ) {
   return {
     add_message: addMessage,
     branch: "master",
@@ -80,6 +80,10 @@ async function addLibraryInfoRecursive(machineName: string, libraryBaseDir: stri
       const roundtrip = await fs.readJSON("/home/sebastian/tmp/roundtrip.json");
       if (JSON.stringify(original) !== JSON.stringify(roundtrip)) {
         console.error(`roundtrip not identical @ ${info.devName}. Not adding this library to the list.`);
+        console.log("original:");
+        console.log(JSON.stringify(original));
+        console.log("roundtrip:");
+        console.log(JSON.stringify(roundtrip));
       } else {
         weblateInfo.push(createWeblateImportData(info, libInternalInfo.license, languageFilename));
       }
@@ -94,6 +98,7 @@ async function addLibraryInfoRecursive(machineName: string, libraryBaseDir: stri
   }
 }
 
+// tslint:disable-next-line: no-floating-promises
 (async () => {
   const libraryDir = "/home/sebastian/Documents/h5p_dev/h5p-dependency-getter/libs";
 
@@ -104,9 +109,23 @@ async function addLibraryInfoRecursive(machineName: string, libraryBaseDir: stri
 
   const getter = new Getter(combinedRegistry);
 
-  const libraries = await combinedRegistry.getAllLibraries();
+  let libraries = await combinedRegistry.getAllLibraries();
   const weblateInfo = [];
   const checkedLibMachineNames = [];
+
+  const args = process.argv;
+  args.splice(0, 2);
+  if (args.length > 0) {
+    libraries = [];
+    for (const arg of args) {
+      const lib = await combinedRegistry.getLibraryInformationForMachineName(arg);
+      if (lib) {
+        libraries.push(lib);
+      }
+    }
+  }
+
+  console.log(JSON.stringify(libraries));
 
   for (const lib of libraries) {
     try {

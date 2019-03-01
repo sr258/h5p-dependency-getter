@@ -5,7 +5,9 @@
   "main": "src/index.ts",
   "scripts": {
     "test": "mocka",
-    "h5p-dependency-getter": "node -r ts-node/register src/index.ts"
+    "h5p-dependency-getter": "node -r ts-node/register src/index.ts",
+    "get-weblate": "node -r ts-node/register src/get-all.ts"
+
   },
   "repository": {
     "type": "git",
