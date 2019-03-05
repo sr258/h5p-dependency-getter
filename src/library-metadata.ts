@@ -42,6 +42,6 @@ export default class LibraryMetadataGetter {
 
   private async initialize() {
     this.metadata = (await fs.readJSON(this.libraryPath + "/library.json")) as ILibraryMetadata;
-    this.addDynamicDependencies();
+    await this.addDynamicDependencies();
   }
 }
