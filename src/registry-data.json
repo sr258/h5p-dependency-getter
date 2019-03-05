@@ -144,6 +144,22 @@
       },
       "machineName": "H5P.SpeakTheWordsSet",
       "repository": "git@github.com:h5p/h5p-speak-the-words-set.git"
+    },
+    "h5p-three-image": {
+      "version": {
+        "major": "0",
+        "minor": "2"
+      },
+      "machineName": "H5P.ThreeImage",
+      "repository": "git@github.com:h5p/h5p-three-image.git"
+    },
+    "h5p-branching-scenario": {
+      "version": {
+        "major": "1",
+        "minor": "0"
+      },
+      "machineName": "H5P.BranchingScenario",
+      "repository": "git@github.com:h5p/h5p-branching-scenario.git"
     }
   }
 }
